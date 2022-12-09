@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const fileUpload = require("express-fileupload");
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
@@ -34,21 +33,17 @@ const storage = multer.diskStorage({
 var upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-            cb(null, true);
-        } else {
-            cb(null, false);
-            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-        }
+        cb(null, true);
     }
 });
 
-app.use("/photo", express.static("public"));
+app.use("/public", express.static("public"));
 
-app.post('/user-profile', upload.single('profileImg'), (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host');
-    const imgLink = url + '/photo/' + req.file.filename;
-    res.status(200).send(imgLink);
+app.post('/upload', upload.single('uploadFile'), (req, res, next) => {
+    // const url = req.protocol + '://' + req.get('host');
+    // const imgLink = url + '/public/' + req.file.filename;
+    // res.status(200).send(imgLink);
+    res.status(200).send("OK");
 });
 
 app.post('/send_mail', (req, res) => {
