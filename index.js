@@ -76,8 +76,8 @@ app.post('/send_mail', (req, res) => {
             res.send({'error': 'Something wrong!'});
             console.log(error);
         } else {
-        console.log('Suceess');
-        res.status(200).json({success: 'Hello'});
+            console.log('Suceess');
+            res.status(200).json({success: 'Hello'});
         }
     });
 })
