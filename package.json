@@ -4,7 +4,8 @@
   "description": "This is server for email sending function of https://spinman.ee",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "npm run server",
+    "build": "npm run build"
   },
   "author": "jura",
   "license": "MIT",
