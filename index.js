@@ -52,7 +52,7 @@ app.post('/send_mail', (req, res) => {
             service: "Gmail",
             auth: {
                 user: "jakus.superdev@gmail.com",
-                pass: "fjxxdvcppecaaqtu",
+                pass: "",
             },
         })
     );
